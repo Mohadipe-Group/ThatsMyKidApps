@@ -28,6 +28,12 @@ function init() {
 		var returnValue = width * fraction;
 		return returnValue;
 	}
+	
+	function newCoords(xCoord) {
+		var yCoord = window.innerHeight - (((window.innerHeight - initialHeight) / window.innerWidth) * xCoord) - initialHeight;
+//		var xCoord = window.innerHeight - xCoord - initialHeight;
+		return {x:xCoord, y:yCoord};
+	}
 
 	// add touchlistener:
 	document.addEventListener('touchmove', function(event) {
@@ -39,8 +45,8 @@ function init() {
 		var myImageStyle = myImage.style;
 		myImageStyle.removeProperty("bottom");
 		console.log("touch.pageY: " + touch.pageY);
-		myImageStyle.top = touch.pageY + "px";
-		myImageStyle.left = touch.pageX + "px";
+		myImageStyle.left = newCoords(touch.pageX).x + "px";
+		myImageStyle.top = newCoords(touch.pageX).y + "px";
 		// var oldWidth;
 		// var oldHeight;
 		// if (myImageStyle.getPropertyValue("width") !== null) {
