@@ -1,0 +1,18 @@
+body {
+     background-color:black;
+ }
+
+.canvasStyle {
+         position:absolute;
+         bottom:0;
+         left:0;
+         margin:10;
+         width:400;
+         height:200;
+         background-color:white;
+         -moz-border-radius: 20px;
+         -webkit-border-radius: 20px;
+         -khtml-border-radius: 20px;
+         border-radius: 20px;
+ }
+ 
