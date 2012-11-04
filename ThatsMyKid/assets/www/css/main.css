@@ -1,6 +1,11 @@
 body {
      background-color:black;
  }
+ 
+.testimg1 {
+	position:relative;
+	padding:10px;
+}
 
 .canvasStyle {
          position:absolute;
@@ -9,10 +14,11 @@ body {
          margin:10;
          width:400;
          height:200;
+         padding:10px;
          background-color:white;
-         -moz-border-radius: 20px;
-         -webkit-border-radius: 20px;
-         -khtml-border-radius: 20px;
-         border-radius: 20px;
+         -moz-border-radius: 5px;
+         -webkit-border-radius: 5px;
+         -khtml-border-radius: 5px;
+         border-radius: 5px;
  }
  

@@ -2,23 +2,18 @@ function init() {
 	var initialHeight = window.innerHeight / 2;
 	var initialWidth = window.innerWidth / 4;
 	
-	// console.log("Available Height: " + window.screen.availHeight);
-	// console.log("Available Width: " + window.screen.availWidth);
-	// console.log("Height: " + window.screen.height);
-	// console.log("Width: " + window.screen.width);
-	// console.log("Inner Height: " + window.innerHeight);
-	// console.log("Inner Width: " + window.innerWidth);
 	var fCanvas = document.getElementById("canvas1");
 	
 	fCanvas.style.width = initialWidth + "px";
 	fCanvas.style.height = initialHeight + "px";
 	
 	console.log(document);
-	var fContext = fCanvas.getContext("2d");
-	var fImage = document.getElementById("testimg1");
+	// maybe the canvas-solution is faster, than the div-thing... so keep this code
+//	var fContext = fCanvas.getContext("2d");
+//	var fImage = document.getElementById("testimg1");
 //	fImage.onload = function() {
-		fContext.drawImage(fImage, 0, 0, initialWidth, initialHeight);
-		fImage.style.display = 'none';
+//		fContext.drawImage(fImage, 0, 0, initialWidth, initialHeight);
+//		fImage.style.display = 'none';
 //	};
 	// fCanvas.style.opacity = 0.8;
 
@@ -31,7 +26,6 @@ function init() {
 	
 	function newCoords(xCoord) {
 		var yCoord = window.innerHeight - (((window.innerHeight - initialHeight) / window.innerWidth) * xCoord) - initialHeight;
-//		var xCoord = window.innerHeight - xCoord - initialHeight;
 		return {x:xCoord, y:yCoord};
 	}
 
@@ -44,18 +38,10 @@ function init() {
 		console.log("left-Value: " + myComputedImageStyle.getPropertyValue('left'));
 		var myImageStyle = myImage.style;
 		myImageStyle.removeProperty("bottom");
-		console.log("touch.pageY: " + touch.pageY);
+		// move image to the upper right
 		myImageStyle.left = newCoords(touch.pageX).x + "px";
 		myImageStyle.top = newCoords(touch.pageX).y + "px";
-		// var oldWidth;
-		// var oldHeight;
-		// if (myImageStyle.getPropertyValue("width") !== null) {
-		// oldWidth = parseInt(myImageStyle.getPropertyValue("width"), 10);
-		// oldHeight = parseInt(myImageStyle.getPropertyValue("height"), 10);
-		// } else {
-		// oldWidth = 400;
-		// oldHeight = 200;
-		// }
+		// scale image smaller when moved right
 		myImageStyle.width = scaledSize(touch.pageX, initialWidth) + "px";
 		myImageStyle.height = scaledSize(touch.pageX, initialHeight) + "px";
 	}, false);
