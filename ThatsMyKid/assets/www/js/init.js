@@ -7,6 +7,6 @@ THATSMYKID.init = function() {
 	fCanvas.style.width = THATSMYKID.initialWidth + "px";
 	fCanvas.style.height = THATSMYKID.initialHeight + "px";
 	// add touchlistener:
-	document.addEventListener('touchmove', THATSMYKID.listener.touchListen, false);
+	document.getElementById("canvas1").addEventListener('touchmove', THATSMYKID.listener.touchListen, false);
 
 };
