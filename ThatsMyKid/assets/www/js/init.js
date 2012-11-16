@@ -1,4 +1,4 @@
-THATSMYKID.init = function() {
+THATSMYKID.deviceready = function() {
 	THATSMYKID.initialHeight = window.innerHeight / 2;
 	THATSMYKID.initialWidth = window.innerWidth / 4;
 	
@@ -9,4 +9,24 @@ THATSMYKID.init = function() {
 	// add touchlistener:
 	fCanvas.addEventListener('touchmove', THATSMYKID.listener.touchListen, false);
 
+	document.getElementById("text").innerHTML = "TestText";
+	
+//	document.getElementById("text").innerHTML = "VISITED: init";
+//	console.log("VISITED: init");
+	window.webintent.getUri(function(url){
+		document.getElementById("text").innerHTML = "Called URI-Callback";
+		if (url !== "") {
+			document.getElementById("text").innerHTML = "URL ist: " + url;
+		}
+	}, 
+	function(error) {
+		document.getElementById("text").innerHTML = "FEHLER!!";
+	});
+	
+	document.getElementById("text").innerHTML = "End of Init Method";
+};
+
+THATSMYKID.init = function() {
+	document.addEventListener("deviceready", THATSMYKID.deviceready, false);
+	
 };

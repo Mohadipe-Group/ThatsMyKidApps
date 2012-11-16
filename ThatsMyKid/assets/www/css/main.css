@@ -7,6 +7,12 @@ body {
 	padding:10px;
 }
 
+.textStyle {
+	background-color: white;
+	height: 50px;
+	width: 100%;
+}
+
 .canvasStyle {
          position:absolute;
          bottom:0;
