@@ -26,22 +26,27 @@ THATSMYKID.listener.preferencesButton = function(event) {
 };
 
 THATSMYKID.listener.chooseFromGallery = function(event) {
-	navigator.camera.getPicture(
-  function(uri) {
-//  	console.log("XXXXX URI XXXXX " + uri);
-      var img = document.getElementById('testimg1');
-      img.style.visibility = "visible";
-      img.style.display = "block";
-      img.src = uri;
-//      document.getElementById('camera_status').innerHTML = "Success";
-      THATSMYKID.listener.hidePreferences();
-  },
-  function(e) {
-      console.log("Error getting picture: " + e);
-      document.getElementById('camera_status').innerHTML = "Error getting picture.";
-  },
-  { quality: 10, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY}
-  );
+	navigator.camera
+			.getPicture(
+					function(uri) {
+						// console.log("XXXXX URI XXXXX " + uri);
+						var img = document.getElementById('testimg1');
+						img.style.visibility = "visible";
+						img.style.display = "block";
+						img.src = uri;
+						// document.getElementById('camera_status').innerHTML =
+						// "Success";
+					},
+					function(e) {
+						console.log("Error getting picture: " + e);
+						document.getElementById('camera_status').innerHTML = "Error getting picture.";
+					},
+					{
+						quality : 10,
+						destinationType : navigator.camera.DestinationType.FILE_URI,
+						sourceType : navigator.camera.PictureSourceType.PHOTOLIBRARY
+					});
+	THATSMYKID.listener.hidePreferences();
 };
 
 THATSMYKID.listener.showPreferences = function() {
