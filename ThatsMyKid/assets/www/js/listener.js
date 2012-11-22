@@ -17,6 +17,41 @@ THATSMYKID.listener.touchListen = function(event) {
 	myImageStyle.height = calc.scaledSize(touch.pageX, THATSMYKID.initialHeight) + "px";
 };
 
+THATSMYKID.listener.preferencesButton = function(event) {
+	if ("visible" === document.getElementById("actionSelector").style.visibility) {
+		THATSMYKID.listener.hidePreferences();
+	} else {
+		THATSMYKID.listener.showPreferences();
+	}
+};
+
+THATSMYKID.listener.chooseFromGallery = function(event) {
+	navigator.camera.getPicture(
+  function(uri) {
+//  	console.log("XXXXX URI XXXXX " + uri);
+      var img = document.getElementById('testimg1');
+      img.style.visibility = "visible";
+      img.style.display = "block";
+      img.src = uri;
+//      document.getElementById('camera_status').innerHTML = "Success";
+      THATSMYKID.listener.hidePreferences();
+  },
+  function(e) {
+      console.log("Error getting picture: " + e);
+      document.getElementById('camera_status').innerHTML = "Error getting picture.";
+  },
+  { quality: 10, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY}
+  );
+};
+
+THATSMYKID.listener.showPreferences = function() {
+	document.getElementById("actionSelector").style.visibility = "visible";
+};
+
+THATSMYKID.listener.hidePreferences = function() {
+	document.getElementById("actionSelector").style.visibility = "hidden";
+};
+
 // maybe the canvas-solution is faster, than the div-thing... so keep this code
 //var fContext = fCanvas.getContext("2d");
 //var fImage = document.getElementById("testimg1");

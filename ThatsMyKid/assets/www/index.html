@@ -7,22 +7,24 @@
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 <script>THATSMYKID = {};</script>
 <script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
-<script type="text/javascript" charset="utf-8" src="webintent.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/listener.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/calculations.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/init.js"></script>
 
 </head>
 <body onload="THATSMYKID.init();" id="stage">
-	<img id="camera_image" style="height:20px;width:20px;" src="">
-	<div id="text" class="textStyle"></div>
+<!-- 	<img id="camera_image" style="height:20px;width:20px;" src=""> -->
+
 	<div id="canvas1" class="canvasStyle"><img id="testimg1" src="DSC_0437.JPG" width="100%" /></div>
-	
+	<div id="actionSelector" class="actionSelector">
+		<div id="galleryButton" class="actionButton">Pick from Gallery</div>
+	</div>
 	<!--     <span id="devready">onDeviceReady not fired.</span> -->
 	<!--     <img width="80%" alt="Ein Bild" src="file:///sdcard/DCIM/100ANDRO/DSC_3570.jpg"/> -->
 	<!-- 	<br/> -->
 	<!-- 	Status: <span id="status">NONE</span> -->
 	<!--     </p> -->
+	<img id="preferencesButton" class="preferencesButton" src="res/Zahnrad.jpg">
 </body>
 </html>
 

@@ -28,3 +28,33 @@ body {
          border-radius: 5px;
  }
  
+.preferencesButton {
+	position:absolute;
+	bottom:0px;
+	right:0px;
+	width:30px;
+	height:30px; 
+}
+
+
+.actionSelector {
+	position: absolute;
+	background-color:white;
+	left:20%;
+	top:20%;
+	height:60%;
+	width:60%;
+	visibility:hidden;
+}
+
+.actionButton {
+	position:absolute;
+	width:80%;
+	height:20%;
+	left:10%;
+	top:10%;
+	border-style:solid;
+	border-color:black;
+	border-width:2px;
+	padding:5px;
+}
