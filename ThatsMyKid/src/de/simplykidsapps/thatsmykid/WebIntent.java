@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.text.Html;
 
@@ -84,7 +85,8 @@ public class WebIntent extends Plugin {
                 Intent i = ((DroidGap)this.cordova.getActivity()).getIntent();
                 String extraName = args.getString(0);
                 if (i.hasExtra(extraName)) {
-                    return new PluginResult(PluginResult.Status.OK, i.getStringExtra(extraName));
+                	Uri uri = i.getParcelableExtra(extraName);
+                    return new PluginResult(PluginResult.Status.OK, uri.getPath());
                 } else {
                     return new PluginResult(PluginResult.Status.ERROR);
                 }
