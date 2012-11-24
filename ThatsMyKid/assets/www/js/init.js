@@ -14,6 +14,9 @@ THATSMYKID.deviceready = function() {
 	
 	var galleryButton = document.getElementById("galleryButton");
 	galleryButton.addEventListener('touchstart', THATSMYKID.listener.chooseFromGallery, false);
+
+	var galleryButton = document.getElementById("cameraButton");
+	galleryButton.addEventListener('touchstart', THATSMYKID.listener.takeFromCamera, false);
 	
 //	document.getElementById("text").innerHTML = "VISITED: init";
 //	console.log("VISITED: init");
