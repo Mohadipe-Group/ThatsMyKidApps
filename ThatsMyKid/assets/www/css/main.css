@@ -7,6 +7,9 @@ body {
 	padding:10px;
 }
 
+.importPic {
+	}
+
 .textStyle {
 	background-color: white;
 	height: 50px;
@@ -27,7 +30,10 @@ body {
          -khtml-border-radius: 5px;
          border-radius: 5px;
  }
- 
+
+.picImportStyle {
+	}
+
 .preferencesButton {
 	position:absolute;
 	bottom:0px;

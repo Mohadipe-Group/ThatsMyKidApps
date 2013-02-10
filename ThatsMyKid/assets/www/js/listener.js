@@ -30,7 +30,7 @@ THATSMYKID.listener.chooseFromGallery = function(event) {
 			.getPicture(
 					function(uri) {
 						// console.log("XXXXX URI XXXXX " + uri);
-						var img = document.getElementById('testimg1');
+						var img = document.getElementById('importPic');
 						img.style.visibility = "visible";
 						img.style.display = "block";
 						img.src = uri;
@@ -54,7 +54,7 @@ THATSMYKID.listener.takeFromCamera = function(event) {
 			.getPicture(
 					function(uri) {
 						// console.log("XXXXX URI XXXXX " + uri);
-						var img = document.getElementById('testimg1');
+						var img = document.getElementById('importPic');
 						img.style.visibility = "visible";
 						img.style.display = "block";
 						img.src = uri;
