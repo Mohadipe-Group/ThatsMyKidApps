@@ -54,5 +54,5 @@ THATSMYKID.Persistence = function() {
 		
 		
 	}
-
+	
 };
