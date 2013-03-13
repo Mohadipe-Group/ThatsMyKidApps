@@ -1,58 +1,59 @@
-THATSMYKID.Persistence = function() {
+THATSMYKID.Persistence = {};
 
-	// usage of cordova database:
-	// http://docs.phonegap.com/en/2.5.0/cordova_storage_storage.md.html#Storage
+THATSMYKID.Persistence.db;
 
-	// is there already an instance?
-	if (typeof Persistence.instance === "object") {
-		return Persistence.instance;
-	}
+// usage of cordova database:
+// http://docs.phonegap.com/en/2.5.0/cordova_storage_storage.md.html#Storage
 
-	function createDatabase(tx) {
-		tx.execute('CREATE TABLE IF NOT EXISTS IMAGES (id unique, imageUrl)');
-	}
+THATSMYKID.Persistence.createDatabase = function(tx) {
+	tx.executeSql('DROP TABLE IF EXISTS IMAGES');
+	tx.executeSql('CREATE TABLE IF NOT EXISTS IMAGES (imageUrl unique)');
+};
 
-	var db = window.openDatabase("ThatsMyKidDB", "0.1", "ThatsMyKid DataBase",
+THATSMYKID.Persistence.init = function() {
+	THATSMYKID.Persistence.db = window.openDatabase("ThatsMyKidDB", "0.1", "ThatsMyKid DataBase",
 			10000);
-	db.transaction(createDatabase, errorDB, successCB);
+	THATSMYKID.Persistence.db.transaction(THATSMYKID.Persistence.createDatabase, THATSMYKID.Persistence.errorDB, THATSMYKID.Persistence.successCB);
+};
 
-	// Transaction error callback
-	//
-	function errorCB(tx, err) {
-		alert("Error processing SQL: " + err);
+// Transaction error callback
+//
+THATSMYKID.Persistence.errorCB = function(err) {
+	alert("Error processing SQL: " + err.code);
+};
+
+// Transaction success callback
+//
+THATSMYKID.Persistence.successCB = function() {
+	alert("success!");
+};
+
+THATSMYKID.Persistence.selectSuccess = function(tx, results) {
+	alert(results.rows.item(0).imageUrl);
+};
+
+
+THATSMYKID.Persistence.saveImage = function(path) {
+	THATSMYKID.Persistence.db.transaction(saveUrl, THATSMYKID.Persistence.errorCB, THATSMYKID.Persistence.successCB);
+
+	function saveUrl(tx) {
+		tx.executeSql('INSERT INTO IMAGES (imageUrl) VALUES ("' + path + '")');
+	}
+};
+
+THATSMYKID.Persistence.deleteImage = function(path) {
+	THATSMYKID.Persistence.db.transaction(deleteUrl, THATSMYKID.Persistence.errorCB, THATSMYKID.Persistence.successCB);
+
+	function deleteUrl(tx) {
+		tx.executeSql('DELETE FROM IMAGES where imageUrl=' + path);
+	}
+};
+
+THATSMYKID.Persistence.loadImages= function() {
+	THATSMYKID.Persistence.db.transaction(loadUrls, THATSMYKID.Persistence.errorCB, THATSMYKID.Persistence.successCB);
+
+	function loadUrls(tx) {
+		tx.executeSql('SELECT imageUrl FROM IMAGES', [], THATSMYKID.Persistence.selectSuccess, THATSMYKID.Persistence.errorCB);
 	}
 
-	// Transaction success callback
-	//
-	function successCB() {
-		alert("success!");
-	}
-
-	function saveImage(path) {
-		db.transaction(saveUrl, errorCB, successCB);
-
-		function saveUrl(tx) {
-			tx.executeSql('INSERT INTO IMAGES (id, imageUrl) VALUES (1, '
-					+ path + ')');
-		}
-	}
-
-	function deleteImage(path) {
-		db.transaction(deleteUrl, errorCB, successCB);
-
-		function deleteUrl(tx) {
-			tx.executeSql('DELETE FROM IMAGES where imageUrl=' + path);
-		}
-	}
-
-	function loadImages(imagesLoaded) {
-		db.transaction(deleteUrl, errorCB, successCB);
-
-		function deleteUrl(tx) {
-			tx.executeSql('select imageUrl FROM IMAGES');
-		}
-		
-		
-	}
-	
 };

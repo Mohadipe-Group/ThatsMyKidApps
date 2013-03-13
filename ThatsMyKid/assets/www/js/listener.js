@@ -34,6 +34,8 @@ THATSMYKID.listener.chooseFromGallery = function(event) {
 						img.style.visibility = "visible";
 						img.style.display = "block";
 						img.src = uri;
+						THATSMYKID.Persistence.init();
+						THATSMYKID.Persistence.saveImage(uri);
 						// document.getElementById('camera_status').innerHTML =
 						// "Success";
 					},
@@ -53,6 +55,7 @@ THATSMYKID.listener.takeFromCamera = function(event) {
 	navigator.camera
 			.getPicture(
 					function(uri) {
+						THATSMYKID.Persistence.loadImages();
 						// console.log("XXXXX URI XXXXX " + uri);
 						var img = document.getElementById('importPic');
 						img.style.visibility = "visible";
