@@ -38,6 +38,9 @@ THATSMYKID.listener.chooseFromGallery = function(event) {
 						THATSMYKID.Persistence.saveImage(uri);
 						// document.getElementById('camera_status').innerHTML =
 						// "Success";
+//						console.log("Befor addElement: ");
+//						addElement();
+//						console.log("Nach addElement: ");
 					},
 					function(e) {
 						console.log("Error getting picture: " + e);
