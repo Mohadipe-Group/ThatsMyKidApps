@@ -34,8 +34,8 @@ THATSMYKID.listener.chooseFromGallery = function(event) {
 						img.style.visibility = "visible";
 						img.style.display = "block";
 						img.src = uri;
-						THATSMYKID.Persistence.init();
-						THATSMYKID.Persistence.saveImage(uri);
+//						THATSMYKID.Persistence.init();
+//						THATSMYKID.Persistence.saveImage(uri);
 						// document.getElementById('camera_status').innerHTML =
 						// "Success";
 						console.log("Befor addElement: ");
@@ -58,7 +58,7 @@ THATSMYKID.listener.takeFromCamera = function(event) {
 	navigator.camera
 			.getPicture(
 					function(uri) {
-						THATSMYKID.Persistence.loadImages();
+//						THATSMYKID.Persistence.loadImages();
 						// console.log("XXXXX URI XXXXX " + uri);
 						console.debug("Befor addElement: ");
 						var imgDivId = addElement();
@@ -66,7 +66,8 @@ THATSMYKID.listener.takeFromCamera = function(event) {
 						var img = document.getElementById(imgDivId);
 						img.style.visibility = "visible";
 						img.style.display = "block";
-						img.src = uri;
+						console.debug("Befor Background ersetzen: ");
+						ersetzeBackgroundImage(img, uri);
 						// document.getElementById('camera_status').innerHTML =
 						// "Success";
 					},

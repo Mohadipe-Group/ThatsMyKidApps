@@ -55,3 +55,8 @@ function addEmptyPicture() {
 	emptydiv.appendChild(img);
 	ni.appendChild(emptydiv);	
 }
+
+function ersetzeBackgroundImage(targetDiv, picUrl) {
+	var divStyleContent = 'background-image:url(' + picUrl + ');background-size: Auto 100%;background-position:center;';
+	targetDiv.setAttribute('style', divStyleContent);
+}
