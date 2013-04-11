@@ -1,5 +1,4 @@
 function addElement() {
-	console.info("In addElement: ");
   removeEmptyPicture();
   var ni = document.getElementById('stage');
 
@@ -8,7 +7,6 @@ function addElement() {
   var num = (document.getElementById('anzBilder').value -1)+ 2;
 
   numi.value = num;
-  console.log("create Element: ");
   var newdiv = document.createElement('div');
 
   var divClassName = 'picture';
@@ -20,23 +18,17 @@ function addElement() {
   newdiv.setAttribute('id', divIdName);
   
   var divStyleContent = 'background-image:url(DSC_0437.JPG);background-size: Auto 100%;background-position:center;';
-	console.info("In addElement style hinzufuegen: " + divStyleContent);
   newdiv.setAttribute('style', divStyleContent);
 
-	console.info("append Element: ");
   ni.appendChild(newdiv);
   addEmptyPicture();
   return divIdName;
 }
 
 function removeEmptyPicture() {
-
-var ni = document.getElementById('stage');
-
-var emptydiv = document.getElementById('emptyPicture');
-
-ni.removeChild(emptydiv);
-
+  var ni = document.getElementById('stage');
+  var emptydiv = document.getElementById('emptyPicture');
+  ni.removeChild(emptydiv);
 }
 
 function addEmptyPicture() {

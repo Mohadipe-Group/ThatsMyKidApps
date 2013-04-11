@@ -29,16 +29,13 @@ THATSMYKID.listener.chooseFromGallery = function(event) {
 	navigator.camera
 			.getPicture(
 					function(uri) {
-						console.debug("Befor addElement: ");
 						var imgDivId = addElement();
-						console.debug("Nach addElement: ");
 						var img = document.getElementById(imgDivId);
 						img.style.visibility = "visible";
 						img.style.display = "block";
-						console.debug("Befor Background ersetzen: ");
 						ersetzeBackgroundImage(img, uri);
-//						THATSMYKID.Persistence.init();
-//						THATSMYKID.Persistence.saveImage(uri);
+						THATSMYKID.Persistence.init();
+						THATSMYKID.Persistence.saveImage(uri);
 						// document.getElementById('camera_status').innerHTML =
 						// "Success";
 
@@ -59,15 +56,12 @@ THATSMYKID.listener.takeFromCamera = function(event) {
 	navigator.camera
 			.getPicture(
 					function(uri) {
-//						THATSMYKID.Persistence.loadImages();
+						THATSMYKID.Persistence.loadImages();
 						// console.log("XXXXX URI XXXXX " + uri);
-						console.debug("Befor addElement: ");
 						var imgDivId = addElement();
-						console.debug("Nach addElement: ");
 						var img = document.getElementById(imgDivId);
 						img.style.visibility = "visible";
 						img.style.display = "block";
-						console.debug("Befor Background ersetzen: ");
 						ersetzeBackgroundImage(img, uri);
 						// document.getElementById('camera_status').innerHTML =
 						// "Success";
