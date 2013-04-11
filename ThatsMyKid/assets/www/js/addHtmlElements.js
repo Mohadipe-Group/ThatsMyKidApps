@@ -1,5 +1,6 @@
 function addElement() {
-	console.log("In addElement: ");
+	console.info("In addElement: ");
+  removeEmptyPicture();
   var ni = document.getElementById('stage');
 
   var numi = document.getElementById('anzBilder');
@@ -19,11 +20,38 @@ function addElement() {
   newdiv.setAttribute('id', divIdName);
   
   var divStyleContent = 'background-image:url(DSC_0437.JPG);background-size: Auto 100%;background-position:center;';
-  
+	console.info("In addElement style hinzufuegen: " + divStyleContent);
   newdiv.setAttribute('style', divStyleContent);
 
-//  newdiv.innerHTML = 'Element Number '+num+' has been added! <a href=\'#\' onclick=\'removeElement('+divIdName+')\'>Remove the div "'+divIdName+'"</a>';
-  console.log("append Element: ");
+	console.info("append Element: ");
   ni.appendChild(newdiv);
+  addEmptyPicture();
+  return divIdName;
+}
 
+function removeEmptyPicture() {
+
+var ni = document.getElementById('stage');
+
+var emptydiv = document.getElementById('emptyPicture');
+
+ni.removeChild(emptydiv);
+
+}
+
+function addEmptyPicture() {
+	var ni = document.getElementById('stage');
+
+	var emptydiv = document.createElement('div');
+	emptydiv.setAttribute('class', 'picture');
+	emptydiv.setAttribute('id', 'emptyPicture');
+
+	var img = document.createElement('img');
+	
+	img.setAttribute('id', 'fingerPicture');
+	img.setAttribute('width', '60%');
+	img.setAttribute('src', 'res/finger.png');
+	
+	emptydiv.appendChild(img);
+	ni.appendChild(emptydiv);	
 }

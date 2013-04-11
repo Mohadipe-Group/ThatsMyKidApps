@@ -38,9 +38,9 @@ THATSMYKID.listener.chooseFromGallery = function(event) {
 						THATSMYKID.Persistence.saveImage(uri);
 						// document.getElementById('camera_status').innerHTML =
 						// "Success";
-//						console.log("Befor addElement: ");
-//						addElement();
-//						console.log("Nach addElement: ");
+						console.log("Befor addElement: ");
+						addElement();
+						console.log("Nach addElement: ");
 					},
 					function(e) {
 						console.log("Error getting picture: " + e);
@@ -60,7 +60,10 @@ THATSMYKID.listener.takeFromCamera = function(event) {
 					function(uri) {
 						THATSMYKID.Persistence.loadImages();
 						// console.log("XXXXX URI XXXXX " + uri);
-						var img = document.getElementById('importPic');
+						console.debug("Befor addElement: ");
+						var imgDivId = addElement();
+						console.debug("Nach addElement: ");
+						var img = document.getElementById(imgDivId);
 						img.style.visibility = "visible";
 						img.style.display = "block";
 						img.src = uri;
@@ -68,7 +71,7 @@ THATSMYKID.listener.takeFromCamera = function(event) {
 						// "Success";
 					},
 					function(e) {
-						console.log("Error getting picture: " + e);
+						console.debug("Error getting picture: " + e);
 						document.getElementById('camera_status').innerHTML = "Error getting picture.";
 					},
 					{
