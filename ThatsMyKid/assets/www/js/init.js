@@ -34,9 +34,4 @@ THATSMYKID.deviceready = function() {
 
 THATSMYKID.init = function() {
 	document.addEventListener("deviceready", THATSMYKID.deviceready, false);
-//	var i = 0;
-//	while (i < 6) {
-//		  i++;
-//		  addElement();
-//	}	
 };

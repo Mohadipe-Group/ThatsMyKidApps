@@ -53,10 +53,16 @@ function addEmptyPicture() {
 	img.setAttribute('src', 'res/finger.png');
 	
 	emptydiv.appendChild(img);
-	ni.appendChild(emptydiv);	
+	ni.appendChild(emptydiv);
+	reInitPreferencesButton();
 }
 
 function ersetzeBackgroundImage(targetDiv, picUrl) {
 	var divStyleContent = 'background-image:url(' + picUrl + ');background-size: Auto 100%;background-position:center;';
 	targetDiv.setAttribute('style', divStyleContent);
+}
+
+function reInitPreferencesButton() {
+	var preferencesButton = document.getElementById("emptyPicture");
+	preferencesButton.addEventListener('touchstart', THATSMYKID.listener.preferencesButton, false);
 }
