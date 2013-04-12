@@ -1,19 +1,16 @@
 function addElement() {
   removeEmptyPicture();
   var ni = document.getElementById('stage');
-
-  var numi = document.getElementById('anzBilder');
-
-  var num = (document.getElementById('anzBilder').value -1)+ 2;
-
-  numi.value = num;
-  var newdiv = document.createElement('div');
-
+  
   var divClassName = 'picture';
+  
+  var numberOfPictures = document.getElementsByClassName(divClassName).length;
+
+  var newdiv = document.createElement('div');
 
   newdiv.setAttribute('class', divClassName);
   
-  var divIdName = 'picture' + num;
+  var divIdName = divClassName + numberOfPictures;
   
   newdiv.setAttribute('id', divIdName);
   

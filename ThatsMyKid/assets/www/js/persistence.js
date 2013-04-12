@@ -25,11 +25,11 @@ THATSMYKID.Persistence.errorCB = function(err) {
 // Transaction success callback
 //
 THATSMYKID.Persistence.successCB = function() {
-	alert("success!");
+//	alert("success!");
 };
 
 THATSMYKID.Persistence.selectSuccess = function(tx, results) {
-	alert(results.rows.item(0).imageUrl);
+//	alert(results.rows.item(0).imageUrl);
 };
 
 
