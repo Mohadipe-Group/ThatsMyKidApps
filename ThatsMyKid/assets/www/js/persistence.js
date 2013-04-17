@@ -6,7 +6,7 @@ THATSMYKID.Persistence.db;
 // http://docs.phonegap.com/en/2.5.0/cordova_storage_storage.md.html#Storage
 
 THATSMYKID.Persistence.createDatabase = function(tx) {
-	tx.executeSql('DROP TABLE IF EXISTS IMAGES');
+//	tx.executeSql('DROP TABLE IF EXISTS IMAGES');
 	tx.executeSql('CREATE TABLE IF NOT EXISTS IMAGES (imageUrl unique)');
 };
 
@@ -25,12 +25,11 @@ THATSMYKID.Persistence.errorCB = function(err) {
 // Transaction success callback
 //
 THATSMYKID.Persistence.successCB = function() {
+	
 //	alert("success!");
 };
 
-THATSMYKID.Persistence.selectSuccess = function(tx, results) {
-//	alert(results.rows.item(0).imageUrl);
-};
+
 
 
 THATSMYKID.Persistence.saveImage = function(path) {
@@ -53,7 +52,7 @@ THATSMYKID.Persistence.loadImages= function() {
 	THATSMYKID.Persistence.db.transaction(loadUrls, THATSMYKID.Persistence.errorCB, THATSMYKID.Persistence.successCB);
 
 	function loadUrls(tx) {
-		tx.executeSql('SELECT imageUrl FROM IMAGES', [], THATSMYKID.Persistence.selectSuccess, THATSMYKID.Persistence.errorCB);
+		tx.executeSql('SELECT imageUrl FROM IMAGES', [], THATSMYKID.displayExistingPictures, THATSMYKID.Persistence.errorCB);
 	}
 
 };

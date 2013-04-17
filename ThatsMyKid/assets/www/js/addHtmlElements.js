@@ -1,4 +1,4 @@
-function addElement() {
+function addElement(url) {
   removeEmptyPicture();
   var ni = document.getElementById('stage');
   
@@ -19,6 +19,9 @@ function addElement() {
 
   ni.appendChild(newdiv);
   addEmptyPicture();
+  
+  ersetzeBackgroundImage(newdiv, url);
+  
   return divIdName;
 }
 

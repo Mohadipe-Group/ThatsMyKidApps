@@ -29,12 +29,10 @@ THATSMYKID.listener.chooseFromGallery = function(event) {
 	navigator.camera
 			.getPicture(
 					function(uri) {
-						var imgDivId = addElement();
+						var imgDivId = addElement(uri);
 						var img = document.getElementById(imgDivId);
 						img.style.visibility = "visible";
 						img.style.display = "block";
-						ersetzeBackgroundImage(img, uri);
-						THATSMYKID.Persistence.init();
 						THATSMYKID.Persistence.saveImage(uri);
 						// document.getElementById('camera_status').innerHTML =
 						// "Success";
@@ -56,15 +54,10 @@ THATSMYKID.listener.takeFromCamera = function(event) {
 	navigator.camera
 			.getPicture(
 					function(uri) {
-						THATSMYKID.Persistence.loadImages();
-						// console.log("XXXXX URI XXXXX " + uri);
-						var imgDivId = addElement();
+						var imgDivId = addElement(uri);
 						var img = document.getElementById(imgDivId);
 						img.style.visibility = "visible";
 						img.style.display = "block";
-						ersetzeBackgroundImage(img, uri);
-						// document.getElementById('camera_status').innerHTML =
-						// "Success";
 					},
 					function(e) {
 						console.debug("Error getting picture: " + e);
