@@ -18,10 +18,18 @@ THATSMYKID.listener.touchListen = function(event) {
 };
 
 THATSMYKID.listener.preferencesButton = function(event) {
-	if ("visible" === document.getElementById("actionSelector").style.visibility) {
-		THATSMYKID.listener.hidePreferences();
+	THATSMYKID.listener.toggleVisibility("actionSelector");
+};
+
+THATSMYKID.listener.pictureEditButton = function(event) {
+	THATSMYKID.listener.toggleVisibility("editSelector");
+};
+
+THATSMYKID.listener.toggleVisibility = function(divName) {
+	if ("visible" === document.getElementById(divName).style.visibility) {
+		THATSMYKID.listener.hideEdit(divName);
 	} else {
-		THATSMYKID.listener.showPreferences();
+		THATSMYKID.listener.showEdit(divName);
 	}
 };
 
@@ -71,19 +79,10 @@ THATSMYKID.listener.takeFromCamera = function(event) {
 	THATSMYKID.listener.hidePreferences();
 };
 
-THATSMYKID.listener.showPreferences = function() {
-	document.getElementById("actionSelector").style.visibility = "visible";
+THATSMYKID.listener.showEdit = function(divName) {
+	document.getElementById(divName).style.visibility = "visible";
 };
 
-THATSMYKID.listener.hidePreferences = function() {
-	document.getElementById("actionSelector").style.visibility = "hidden";
+THATSMYKID.listener.hideEdit = function(divName) {
+	document.getElementById(divName).style.visibility = "hidden";
 };
-
-// maybe the canvas-solution is faster, than the div-thing... so keep this code
-//var fContext = fCanvas.getContext("2d");
-//var fImage = document.getElementById("testimg1");
-//fImage.onload = function() {
-//	fContext.drawImage(fImage, 0, 0, initialWidth, initialHeight);
-//	fImage.style.display = 'none';
-//};
-// fCanvas.style.opacity = 0.8;
