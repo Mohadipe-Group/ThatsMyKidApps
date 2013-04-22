@@ -13,13 +13,11 @@ function addElement(url) {
   
   newdiv.setAttribute('id', divIdName);
   
-  var divStyleContent = 'background-image:url(DSC_0437.JPG);background-size: Auto 100%;background-position:center;';
+  var divStyleContent = 'background-image:url(' + url + ');background-size: Auto 100%;background-position:center;';
   newdiv.setAttribute('style', divStyleContent);
 
   appBody.insertBefore(newdiv, document.getElementById('emptyPicture'));
-  
-  ersetzeBackgroundImage(newdiv, url);
-  
+    
   addTouchListeners(newdiv);
   
   return divIdName;
@@ -44,10 +42,4 @@ function addTouchListeners(newdiv) {
 	newdiv.addEventListener('touchend', function(e){
 	    touched = false;
 	});
-}
-
-
-function ersetzeBackgroundImage(targetDiv, picUrl) {
-	var divStyleContent = 'background-image:url(' + picUrl + ');background-size: Auto 100%;background-position:center;';
-	targetDiv.setAttribute('style', divStyleContent);
 }
